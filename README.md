@@ -35,3 +35,15 @@ $ go run main.go start -e https://status.cloud.google.com/incidents.json
 ```
 
 Visit http://localhost:8888 for metrics.
+
+## Adding gcp-status-exporter config to Prometheus
+
+Add the below block to prometheus config to start scraping the metrics
+
+```yaml
+scrape_configs:
+    - job_name: 'gcp-status-exporter'
+
+    static_configs:
+    - targets: ['<gcp-status-exporter>:8888']
+```
