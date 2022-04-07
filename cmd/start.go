@@ -39,7 +39,7 @@ var (
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("start called")
 			//gcpstatus.GetGcpStatus()
-			exporter.StartExporter(gcpStatusEndpoint, metricPrefix)
+			exporter.StartExporter(gcpStatusEndpoint)
 		},
 	}
 )
