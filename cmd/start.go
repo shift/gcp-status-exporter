@@ -16,8 +16,6 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/ishantanu/gcp-status-exporter/pkg/exporter"
 
 	"github.com/spf13/cobra"
