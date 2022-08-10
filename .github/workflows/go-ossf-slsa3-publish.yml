@@ -54,7 +54,6 @@ jobs:
     with:
       go-version: 1.17
       evaluated-envs: "COMMIT_DATE:${{needs.args.outputs.commit-date}}, COMMIT:${{needs.args.outputs.commit}}, VERSION:${{needs.args.outputs.version}}, TREE_STATE:${{needs.args.outputs.tree-state}}"
-      path: /artifacts/
       # =============================================================================================================
       #     Optional: For more options, see https://github.com/slsa-framework/slsa-github-generator#golang-projects
       # =============================================================================================================
@@ -70,7 +69,7 @@ jobs:
       - name: Generate provenance
         uses: slsa-framework/github-actions-demo@v0.1
         with:
-          artifact_path: /artifacts/
+          artifact_path: /binary-linux-amd64.intoto.jsonl
 
       - name: Upload provenance
         uses: actions/upload-artifact@v2
