@@ -1,0 +1,40 @@
+# .slsa-goreleaser.yml
+version: 3
+project_name: gcp-status-exporter
+builds:
+  - id: default
+    main: ./main.go
+    binary: gcp-status-exporter
+    ldflags:
+      - -X main.version={{.Version}}
+      - -X main.commit={{.Commit}}
+      - -X main.date={{.Date}}
+    goos:
+      - linux
+      - windows
+      - darwin  
+    goarch:
+      - amd64
+      - arm64    
+    env:
+      - CGO_ENABLED=0  # For static linking (recommended)
+    ignore:
+      - goos: darwin
+        goarch: 386
+
+dockers:
+  - image_templates:
+      - "ghcr.io/shift/gcp-status-exporter:{{ .Tag }}"
+      - "ghcr.io/shift/gcp-status-exporter:latest"
+    dockerfile: Dockerfile  # Path to your Dockerfile
+    build_flag_templates:
+      - "--label=org.opencontainers.image.source={{.GitURL}}"
+      - "--label=org.opencontainers.image.revision={{.Commit}}"
+      - "--platform=linux/amd64"
+      - "--platform=linux/arm64"
+
+changelog:
+  skip: true # We'll generate the changelog separately for SLSA compliance
+
+release:
+  prerelease: auto  # Mark releases as pre-release based on tags (e.g., v0.1.0-beta1)
