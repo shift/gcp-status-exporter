@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/mitchellh/go-homedir v1.1.0
-	github.com/sirupsen/logrus v1.8.1
+	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.4.0
 	github.com/spf13/viper v1.10.1
 	go.opentelemetry.io/otel v1.6.2
@@ -37,7 +37,7 @@ require (
 	github.com/subosito/gotenv v1.2.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.6.0 // indirect
 	go.opentelemetry.io/otel/trace v1.6.2 // indirect
-	golang.org/x/sys v0.0.0-20220114195835-da31bd327af9 // indirect
+	golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/ini.v1 v1.66.2 // indirect
