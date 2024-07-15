@@ -19,6 +19,7 @@ jobs:
           fetch-depth: 0
       - name: Install devbox
         uses: jetify-com/devbox-install-action@v0.11.0
+      - run: nix-shell -p syft
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
