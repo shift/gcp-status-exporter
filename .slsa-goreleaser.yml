@@ -1,40 +1,164 @@
-# .slsa-goreleaser.yml
-version: 3
 project_name: gcp-status-exporter
+
+before:
+  hooks:
+    - go mod tidy
+
+env:
+  - CGO_ENABLED=0
+
 builds:
-  - id: default
-    main: ./main.go
-    binary: gcp-status-exporter
-    ldflags:
-      - -X main.version={{.Version}}
-      - -X main.commit={{.Commit}}
-      - -X main.date={{.Date}}
+  - id: binary
+    dir: cmd
     goos:
-      - linux
       - windows
-      - darwin  
+      - darwin
+      - linux
     goarch:
       - amd64
-      - arm64    
-    env:
-      - CGO_ENABLED=0  # For static linking (recommended)
-    ignore:
-      - goos: darwin
-        goarch: 386
+      - arm64
+    goarm:
+      - 8
+    ldflags:
+      - "{{ .Env.LDFLAGS }}"
+
+archives:
+  - id: archive
+    format: tar.gz
+    files:
+      - LICENSE*
+      - README*
+      - cosign.pub
+      - dist/*.sig
+    format_overrides:
+      - goos: windows
+        format: zip
+
+sboms:
+  - id: archive-sbom
+    cmd: syft
+    args: ["${artifact}", "--file", "${artifact}.sbom.json", "--output", "spdx-json"]
+    documents:
+      - "${artifact}.sbom.json"
+    artifacts: archive
+
+checksum:
+  name_template: 'checksums.txt'
 
 dockers:
-  - image_templates:
-      - "ghcr.io/shift/gcp-status-exporter:{{ .Tag }}"
-      - "ghcr.io/shift/gcp-status-exporter:latest"
-    dockerfile: Dockerfile  # Path to your Dockerfile
+  - goos: linux
+    goarch: amd64
+    image_templates:
+      - "ghcr.io/shift/{{ .ProjectName }}:v{{ .Version }}"
+      - "ghcr.io/shift/{{ .ProjectName }}:{{ .FullCommit }}"
     build_flag_templates:
-      - "--label=org.opencontainers.image.source={{.GitURL}}"
-      - "--label=org.opencontainers.image.revision={{.Commit}}"
-      - "--platform=linux/amd64"
-      - "--platform=linux/arm64"
+      - "--pull"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+      - "--label=org.opencontainers.image.description={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version=v{{.Version}}"
+      - "--label=org.opencontainers.image.licenses=Apache"
+      - "--label=org.opencontainers.image.vendor=shift"
+    extra_files:
+      - "go.mod"
+      - "go.sum"
+      - ".git"
+      - ".gitignore"
+      - "cmd"
+      - "pkg"
+
+signs:
+  - id: checksums
+    cmd: cosign
+    stdin: '{{ .Env.COSIGN_PASSWORD }}'
+    output: true
+    artifacts: checksum
+    args:
+      - sign-blob
+      - --yes
+      - --key
+      - env://COSIGN_PRIVATE_KEY
+      - '--output-certificate=${certificate}'
+      - '--output-signature=${signature}'
+      - '${artifact}'
+  - id: binaries
+    cmd: cosign
+    stdin: '{{ .Env.COSIGN_PASSWORD }}'
+    output: true
+    artifacts: binary
+    args:
+      - sign-blob
+      - --yes
+      - --key
+      - env://COSIGN_PRIVATE_KEY
+      - '--output-certificate=${certificate}'
+      - '--output-signature=${signature}'
+      - '${artifact}'
+  - id: archives
+    cmd: cosign
+    stdin: '{{ .Env.COSIGN_PASSWORD }}'
+    output: true
+    artifacts: archive
+    args:
+      - sign-blob
+      - --yes
+      - --key
+      - env://COSIGN_PRIVATE_KEY
+      - '--output-certificate=${certificate}'
+      - '--output-signature=${signature}'
+      - '${artifact}'
+  - id: sboms
+    cmd: cosign
+    stdin: '{{ .Env.COSIGN_PASSWORD }}'
+    output: true
+    artifacts: sbom
+    args:
+      - sign-blob
+      - --yes
+      - --key
+      - env://COSIGN_PRIVATE_KEY
+      - '--output-certificate=${certificate}'
+      - '--output-signature=${signature}'
+      - '${artifact}'
+
+docker_signs:
+  - id: selfsigned
+    cmd: cosign
+    artifacts: all
+    output: true
+    args:
+      - sign
+      - --yes
+      - --key
+      - env://COSIGN_PRIVATE_KEY
+      - '${artifact}'
+  - id: keyless
+    cmd: cosign
+    artifacts: all
+    output: true
+    args:
+      - sign
+      - --yes
+      - '${artifact}'
+
+snapshot:
+  name_template: "{{ .Version }}-next"
 
 changelog:
-  skip: true # We'll generate the changelog separately for SLSA compliance
+  sort: asc
+  use: github
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - Merge pull request
+      - Merge branch
 
 release:
-  prerelease: auto  # Mark releases as pre-release based on tags (e.g., v0.1.0-beta1)
+  draft: false
+  prerelease: auto
+  extra_files:
+    - glob: "./cosign.pub"
+  footer: |
+    **Full Changelog**: https://github.com/shift/gcp-status-exporter/compare/{{ .PreviousTag }}...{{ .Tag }}
