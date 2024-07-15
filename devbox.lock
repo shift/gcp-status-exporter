@@ -97,6 +97,150 @@
         }
       }
     },
+    "goreleaser@2.0.1": {
+      "last_modified": "2024-07-07T16:08:25Z",
+      "resolved": "github:NixOS/nixpkgs/ab82a9612aa45284d4adf69ee81871a389669a9e#goreleaser",
+      "source": "devbox-search",
+      "version": "2.0.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/5s4a91rm59n0cg2qvr77d9a84w3x71a3-goreleaser-2.0.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/5s4a91rm59n0cg2qvr77d9a84w3x71a3-goreleaser-2.0.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/n3i1qqflg4ym1p53dni8hg1w4h33civx-goreleaser-2.0.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/n3i1qqflg4ym1p53dni8hg1w4h33civx-goreleaser-2.0.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/8d0yikxbcl5l5c1bgr07qfng736616sv-goreleaser-2.0.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/8d0yikxbcl5l5c1bgr07qfng736616sv-goreleaser-2.0.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wfb13cpqjqxid8nqaqqxfjfx7nr8ajkb-goreleaser-2.0.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wfb13cpqjqxid8nqaqqxfjfx7nr8ajkb-goreleaser-2.0.1"
+        }
+      }
+    },
+    "rekor-cli@1.3.6": {
+      "last_modified": "2024-07-07T16:08:25Z",
+      "resolved": "github:NixOS/nixpkgs/ab82a9612aa45284d4adf69ee81871a389669a9e#rekor-cli",
+      "source": "devbox-search",
+      "version": "1.3.6",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/imc4r3gav35nzbrfaji60dx4j1v1rklp-rekor-cli-1.3.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/imc4r3gav35nzbrfaji60dx4j1v1rklp-rekor-cli-1.3.6"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mfjwim58fg55rg8vhv0i0v9ljsjpqcm7-rekor-cli-1.3.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/mfjwim58fg55rg8vhv0i0v9ljsjpqcm7-rekor-cli-1.3.6"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/1idkhy5ha6z2dg4x240vkri9j3p3jhlq-rekor-cli-1.3.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/1idkhy5ha6z2dg4x240vkri9j3p3jhlq-rekor-cli-1.3.6"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/pz57fi7yiycdcd159lq9rqhayrccf3rg-rekor-cli-1.3.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/pz57fi7yiycdcd159lq9rqhayrccf3rg-rekor-cli-1.3.6"
+        }
+      }
+    },
+    "slsa-verifier@2.5.1": {
+      "last_modified": "2024-07-07T16:08:25Z",
+      "resolved": "github:NixOS/nixpkgs/ab82a9612aa45284d4adf69ee81871a389669a9e#slsa-verifier",
+      "source": "devbox-search",
+      "version": "2.5.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/qy9icd5536gl4phk80gisx54hg3brxgx-slsa-verifier-2.5.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/qy9icd5536gl4phk80gisx54hg3brxgx-slsa-verifier-2.5.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ndhbizrnr9x9sjq1gmvg7d5nkx1sfcxv-slsa-verifier-2.5.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/ndhbizrnr9x9sjq1gmvg7d5nkx1sfcxv-slsa-verifier-2.5.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/j9cvzsb77hcjpcxi6a7cf5gsdvs5k1xf-slsa-verifier-2.5.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/j9cvzsb77hcjpcxi6a7cf5gsdvs5k1xf-slsa-verifier-2.5.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/drj22vy2w1phxgznajgcf95843krjy36-slsa-verifier-2.5.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/drj22vy2w1phxgznajgcf95843krjy36-slsa-verifier-2.5.1"
+        }
+      }
+    },
     "syft@1.8.0": {
       "last_modified": "2024-07-07T16:08:25Z",
       "resolved": "github:NixOS/nixpkgs/ab82a9612aa45284d4adf69ee81871a389669a9e#syft",

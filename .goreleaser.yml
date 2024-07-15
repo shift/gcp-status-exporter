@@ -1,3 +1,4 @@
+version: 2
 project_name: gcp-status-exporter
 
 before:
@@ -9,7 +10,7 @@ env:
 
 builds:
   - id: binary
-    dir: cmd
+    dir: .
     goos:
       - windows
       - darwin
@@ -19,8 +20,6 @@ builds:
       - arm64
     goarm:
       - 8
-    ldflags:
-      - "{{ .Env.LDFLAGS }}"
 
 archives:
   - id: archive
