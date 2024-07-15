@@ -39,10 +39,10 @@ jobs:
       - name: Install Cosign
         uses: sigstore/cosign-installer@main
         with:
-          cosign-release: "v1.4.1"
+          cosign-release: "v2.2.4"
       - name: Setup Cosign
         run: |
-          echo "${COSIGN_KEY}" > "$GITHUB_WORKSPACE/cosign.key"
+          echo "${COSIGN_PRIVATE_KEY}" > "$GITHUB_WORKSPACE/cosign.key"
         env:
           COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
       - name: Run GoReleaser
