@@ -132,14 +132,6 @@ docker_signs:
       - --key
       - env://COSIGN_PRIVATE_KEY
       - '${artifact}'
-  - id: keyless
-    cmd: cosign
-    artifacts: all
-    output: true
-    args:
-      - sign
-      - --yes
-      - '${artifact}'
 
 snapshot:
   name_template: "{{ .Version }}-next"
