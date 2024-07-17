@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -28,9 +28,9 @@ var (
 	startCmd = &cobra.Command{
 		Use:   "start",
 		Short: "Start gcp-status-exporter",
-		Long: `This command starts gcp-status-exporter and collects metrics related to GCP service status.`,
+		Long:  `This command starts gcp-status-exporter and collects metrics related to GCP service status.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			exporter.StartExporter(gcpStatusEndpoint)
+			exporter.StartExporter(gcpStatusEndpoint, port)
 		},
 	}
 )
@@ -50,5 +50,4 @@ func init() {
 
 	startCmd.PersistentFlags().StringVarP(&gcpStatusEndpoint, "gcp-endpoint", "e", "", "GCP status page url")
 	startCmd.MarkPersistentFlagRequired("gcp-endpoint")
-
 }

@@ -24,7 +24,7 @@ import (
 	selector "go.opentelemetry.io/otel/sdk/metric/selector/simple"
 )
 
-func initMeter() {
+func initMeter(port string) {
 	config := prometheus.Config{
 		DefaultHistogramBoundaries: []float64{1, 2, 5, 10, 20, 50},
 	}
@@ -46,14 +46,14 @@ func initMeter() {
 
 	http.HandleFunc("/", exporter.ServeHTTP)
 	go func() {
-		_ = http.ListenAndServe(":8888", nil)
+		_ = http.ListenAndServe(port, nil)
 	}()
 
-	fmt.Println("Prometheus server running on :8888")
+	fmt.Println("Prometheus server running on " + port)
 }
 
-func StartExporter(gcpStatusEndpoint string) {
-	initMeter()
+func StartExporter(gcpStatusEndpoint string, port string) {
+	initMeter(port)
 
 	meter := global.MeterProvider().Meter("otel/gcp_status_exporter")
 
