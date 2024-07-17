@@ -16,11 +16,13 @@ spec:
     spec:
       containers:
         - name: gcp-cloud-status-exporter
-          image: ghcr.io/shift/gcp-status-exporter:v0.1.19
+          image: ghcr.io/shift/gcp-status-exporter:v0.1.20
           args: 
             - "start"
             - "-e"
             - "https://status.cloud.google.com/incidents.json"
+            - "-p"
+            - ":8888"
           ports:
             - containerPort: 8888
           resources:
@@ -31,11 +33,13 @@ spec:
               memory: "128Mi"
               cpu: "500m"
         - name: firebase-status-exporter
-          image: ghcr.io/shift/gcp-status-exporter:v0.1.19
+          image: ghcr.io/shift/gcp-status-exporter:v0.1.20
           args: 
             - "start"
             - "-e"
             - "https://status.firebase.google.com/incidents.json"
+            - "-p"
+            - ":8889"
           ports:
             - containerPort: 8889
           resources:

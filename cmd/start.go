@@ -33,6 +33,7 @@ var (
 			exporter.StartExporter(gcpStatusEndpoint, port)
 		},
 	}
+	port string
 )
 
 func init() {
@@ -50,4 +51,5 @@ func init() {
 
 	startCmd.PersistentFlags().StringVarP(&gcpStatusEndpoint, "gcp-endpoint", "e", "", "GCP status page url")
 	startCmd.MarkPersistentFlagRequired("gcp-endpoint")
+	startCmd.Flags().StringVarP(&port, "port", "p", ":8888", "Port to run the server on")
 }

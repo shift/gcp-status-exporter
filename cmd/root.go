@@ -41,7 +41,6 @@ to quickly create a Cobra application.`,
 	// has an action associated with it:
 	//      Run: func(cmd *cobra.Command, args []string) { },
 }
-var port string
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
@@ -65,7 +64,6 @@ func init() {
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
-	rootCmd.Flags().StringVarP(&port, "port", "p", ":8888", "Port to run the server on")
 }
 
 // initConfig reads in config file and ENV variables if set.
