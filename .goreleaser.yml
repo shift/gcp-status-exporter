@@ -66,6 +66,7 @@ dockers:
       - ".gitignore"
       - "cmd"
       - "pkg"
+      - "ca-bundle.crt"
 
 signs:
   - id: checksums
