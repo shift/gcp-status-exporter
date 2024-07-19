@@ -13,8 +13,28 @@ spec:
         app: gcp-status-exporter
       annotations:
         prometheus.io/scrape: "true" 
+        prometheus.io/port: "9998" 
     spec:
       containers:
+        - name: reverse-exporter
+          image: ghcr.io/shift/reverse_exporter:0.1.1
+          command: ["/bin/reverse_exporter"]
+          args:
+            - "--config-file=/etc/config/reverse_exporter.yml"
+            - "--log-level=debug"
+            - "--log-format=json"
+          ports:
+            - containerPort: 9998
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:    # Add volumeMounts section
+            - name: config-volume  # Choose a volume name
+              mountPath: /etc/config
         - name: gcp-cloud-status-exporter
           image: ghcr.io/shift/gcp-status-exporter:v0.1.20
           args: 
@@ -49,4 +69,47 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
+        - name: google-places-status-exporter
+          image: ghcr.io/shift/gcp-status-exporter:v0.1.20
+          args: 
+            - "start"
+            - "-e"
+            - "https://status.cloud.google.com/maps-platform/incidents.json"
+            - "-p"
+            - ":8890"
+          ports:
+            - containerPort: 8890
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+      volumes:         # Add volumes section (outside the container)
+        - name: config-volume 
+          configMap:
+            name: reverse-exporter-conf
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: reverse-exporter-conf
+data:
+  reverse_exporter.yml: |
+    web:
+      listen:
+        - tcp://0.0.0.0:9998
+    
+    reverse_exporters:
+    - path: /metrics
+      exporters:
+        http:
+          - name: gcp-cloud-status-exporter
+            address: http://127.0.0.1:8888/metrics
+          - name: firebase-status-exporter
+            address: http://127.0.0.1:8889/metrics
+          - name: google-places-status-exporter
+            address: http://127.0.0.1:8890/metrics
 
