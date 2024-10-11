@@ -9,8 +9,8 @@ require (
 	github.com/spf13/viper v1.10.1
 	go.opentelemetry.io/otel v1.6.2
 	go.opentelemetry.io/otel/exporters/prometheus v0.28.0
-	go.opentelemetry.io/otel/metric v0.28.0
-	go.opentelemetry.io/otel/sdk/metric v0.28.0
+	go.opentelemetry.io/otel/metric v1.31.0
+	go.opentelemetry.io/otel/sdk/metric v1.31.0
 )
 
 require (
