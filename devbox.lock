@@ -193,51 +193,51 @@
         }
       }
     },
-    "slsa-verifier@2.5.1": {
-      "last_modified": "2024-07-07T16:08:25Z",
-      "resolved": "github:NixOS/nixpkgs/ab82a9612aa45284d4adf69ee81871a389669a9e#slsa-verifier",
+    "slsa-verifier@2.7.1": {
+      "last_modified": "2026-07-23T05:10:05Z",
+      "resolved": "github:NixOS/nixpkgs/7525d999cd850b9a488817abc89c75dc733acf17#slsa-verifier",
       "source": "devbox-search",
-      "version": "2.5.1",
+      "version": "2.7.1",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/qy9icd5536gl4phk80gisx54hg3brxgx-slsa-verifier-2.5.1",
+              "path": "/nix/store/cc4wia0sbyx4516wi9xjncb398fpyx6w-slsa-verifier-2.7.1",
               "default": true
             }
           ],
-          "store_path": "/nix/store/qy9icd5536gl4phk80gisx54hg3brxgx-slsa-verifier-2.5.1"
+          "store_path": "/nix/store/cc4wia0sbyx4516wi9xjncb398fpyx6w-slsa-verifier-2.7.1"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/ndhbizrnr9x9sjq1gmvg7d5nkx1sfcxv-slsa-verifier-2.5.1",
+              "path": "/nix/store/zazj3nqvrzwaqas4n9p5c89ywjfmsi5i-slsa-verifier-2.7.1",
               "default": true
             }
           ],
-          "store_path": "/nix/store/ndhbizrnr9x9sjq1gmvg7d5nkx1sfcxv-slsa-verifier-2.5.1"
+          "store_path": "/nix/store/zazj3nqvrzwaqas4n9p5c89ywjfmsi5i-slsa-verifier-2.7.1"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/j9cvzsb77hcjpcxi6a7cf5gsdvs5k1xf-slsa-verifier-2.5.1",
+              "path": "/nix/store/mb6ynb4qhying2y4rpa3yskq6ddjza71-slsa-verifier-2.7.1",
               "default": true
             }
           ],
-          "store_path": "/nix/store/j9cvzsb77hcjpcxi6a7cf5gsdvs5k1xf-slsa-verifier-2.5.1"
+          "store_path": "/nix/store/mb6ynb4qhying2y4rpa3yskq6ddjza71-slsa-verifier-2.7.1"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/drj22vy2w1phxgznajgcf95843krjy36-slsa-verifier-2.5.1",
+              "path": "/nix/store/rl748z57m4ph9rl8ndin2a4574i17p2n-slsa-verifier-2.7.1",
               "default": true
             }
           ],
-          "store_path": "/nix/store/drj22vy2w1phxgznajgcf95843krjy36-slsa-verifier-2.5.1"
+          "store_path": "/nix/store/rl748z57m4ph9rl8ndin2a4574i17p2n-slsa-verifier-2.7.1"
         }
       }
     },
