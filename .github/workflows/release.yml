@@ -39,7 +39,7 @@ jobs:
       - name: Install Cosign
         uses: sigstore/cosign-installer@main
         with:
-          cosign-release: "v2.2.4"
+          cosign-release: "v2.6.5"
       - name: Setup Cosign
         run: |
           echo "${COSIGN_PRIVATE_KEY}" > "$GITHUB_WORKSPACE/cosign.key"
