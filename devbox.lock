@@ -289,51 +289,41 @@
         }
       }
     },
-    "trivy@0.53.0": {
-      "last_modified": "2024-07-07T16:08:25Z",
-      "resolved": "github:NixOS/nixpkgs/ab82a9612aa45284d4adf69ee81871a389669a9e#trivy",
+    "trivy@0.74.0": {
+      "last_modified": "2026-08-14T15:04:01Z",
+      "resolved": "github:NixOS/nixpkgs/8be7bd0c83f12e2e3bbba07c9044d6fed9e66f7f#trivy",
       "source": "devbox-search",
-      "version": "0.53.0",
+      "version": "0.74.0",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/llf8zg8x45jkpsqdx9z1288dzaz80mp5-trivy-0.53.0",
+              "path": "/nix/store/3zys0fzypic6558dd8w2awrlqj09bz08-trivy-0.74.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/llf8zg8x45jkpsqdx9z1288dzaz80mp5-trivy-0.53.0"
+          "store_path": "/nix/store/3zys0fzypic6558dd8w2awrlqj09bz08-trivy-0.74.0"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/s76rmrxra8v1znwpipm6kh8qsz2mn042-trivy-0.53.0",
+              "path": "/nix/store/s4ah4g93rzkw5japvwn141cggk2yq9jn-trivy-0.74.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/s76rmrxra8v1znwpipm6kh8qsz2mn042-trivy-0.53.0"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/88xbhvszd70zhs6zrsngzdzjg51vaw41-trivy-0.53.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/88xbhvszd70zhs6zrsngzdzjg51vaw41-trivy-0.53.0"
+          "store_path": "/nix/store/s4ah4g93rzkw5japvwn141cggk2yq9jn-trivy-0.74.0"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/z0p72j0ymvw6ydkm2kgk0pdm5dfa4gjy-trivy-0.53.0",
+              "path": "/nix/store/vfahb3d15wdxxksk2qz2j3sh2qar5mzj-trivy-0.74.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/z0p72j0ymvw6ydkm2kgk0pdm5dfa4gjy-trivy-0.53.0"
+          "store_path": "/nix/store/vfahb3d15wdxxksk2qz2j3sh2qar5mzj-trivy-0.74.0"
         }
       }
     }
