@@ -1,10 +1,10 @@
 module github.com/ishantanu/gcp-status-exporter
 
-go 1.18
+go 1.23
 
 require (
 	github.com/mitchellh/go-homedir v1.1.0
-	github.com/sirupsen/logrus v1.9.3
+	github.com/sirupsen/logrus v1.10.2
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/viper v1.10.1
 	go.opentelemetry.io/otel v1.6.2
@@ -45,7 +45,7 @@ require (
 	go.opentelemetry.io/otel/sdk v1.6.0 // indirect
 	go.opentelemetry.io/otel/trace v1.6.2 // indirect
 	golang.org/x/sync v0.1.0 // indirect
-	golang.org/x/sys v0.4.0 // indirect
+	golang.org/x/sys v0.13.0 // indirect
 	golang.org/x/text v0.5.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/ini.v1 v1.66.2 // indirect
