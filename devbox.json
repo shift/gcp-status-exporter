@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.10.7/.schema/devbox.schema.json",
   "packages": [
     "trivy@0.53.0",
-    "go@1.22.5",
+    "go@1.27.0",
     "cosign@2.2.4",
     "syft@1.8.0",
     "slsa-verifier@2.5.1",
